@@ -120,7 +120,7 @@
     ['phase2CaseSearch'].forEach(function (id) {
       document.getElementById(id).addEventListener('input', renderCases);
     });
-    ['phase2CaseStage', 'phase2CaseStatus', 'phase2CaseFilter', 'phase2DateFrom', 'phase2DateTo'].forEach(function (id) {
+    ['phase2CaseStage', 'phase2CaseStatus', 'ledgerCaseFilter', 'phase2DateFrom', 'phase2DateTo'].forEach(function (id) {
       var field = document.getElementById(id);
       if (field) field.addEventListener('change', refreshLedger);
     });
