@@ -116,6 +116,10 @@ DECLARE
   v_previous text;
   v_status jsonb;
 BEGIN
+  IF TG_OP = 'UPDATE' AND OLD.case_id IS DISTINCT FROM NEW.case_id THEN
+    RAISE EXCEPTION 'Ledger entries cannot be reassigned between cases; void and repost the entry';
+  END IF;
+
   IF TG_OP = 'DELETE' THEN
     v_case_id := OLD.case_id;
   ELSE
